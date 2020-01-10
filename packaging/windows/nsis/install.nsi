@@ -66,7 +66,7 @@ ShowUnInstDetails hide
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-!define MUI_FINISHPAGE_SHOWREADME ${WINGS3D_WEB_SITE}
+;!define MUI_FINISHPAGE_SHOWREADME ${WINGS3D_WEB_SITE} ---SB
 !define MUI_FINISHPAGE_SHOWREADME_TEXT "text"
 !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
 !define MUI_PAGE_CUSTOMFUNCTION_PRE ModifyFinishPage
@@ -79,29 +79,29 @@ ShowUnInstDetails hide
 ; - To add another language; add an insert macro line here and include a language file as below
 ; - This must be after all page macros have been inserted
 !insertmacro MUI_LANGUAGE "English" ;first language is the default language
-!insertmacro MUI_LANGUAGE "French"
-!insertmacro MUI_LANGUAGE "Italian"
-!insertmacro MUI_LANGUAGE "Polish"
-!insertmacro MUI_LANGUAGE "Portuguese"
-!insertmacro MUI_LANGUAGE "Dutch"
-!insertmacro MUI_LANGUAGE "Russian"
-!insertmacro MUI_LANGUAGE "Japanese"
+;!insertmacro MUI_LANGUAGE "French"
+;!insertmacro MUI_LANGUAGE "Italian"
+;!insertmacro MUI_LANGUAGE "Polish"
+;!insertmacro MUI_LANGUAGE "Portuguese"
+;!insertmacro MUI_LANGUAGE "Dutch"
+;!insertmacro MUI_LANGUAGE "Russian"
+;!insertmacro MUI_LANGUAGE "Japanese"
 
 !include "English.nsh"
-!include "French.nsh"
-!include "Dutch.nsh"
-!include "Italian.nsh"
-!include "Japanese.nsh"
-!include "Polish.nsh"
-!include "Portuguese.nsh"
-!include "Russian.nsh"
+;!include "French.nsh"
+;!include "Dutch.nsh"
+;!include "Italian.nsh"
+;!include "Japanese.nsh"
+;!include "Polish.nsh"
+;!include "Portuguese.nsh"
+;!include "Russian.nsh"  					---SB
 
 ; MUI end ------
 
 Function .onInit
   ReserveFile "install.ico"
   ReserveFile "uninstall.ico"
-  ReserveFile "${NSISDIR}\Plugins\InstallOptions.dll"
+  ReserveFile "${NSISDIR}\Plugins\InstallOptionsEx.dll"
   ReserveFile "${NSISDIR}\Plugins\LangDLL.dll"
   ReserveFile "${NSISDIR}\Plugins\System.dll"
   ReserveFile "${NSISDIR}\Contrib\Modern UI\ioSpecial.ini"
@@ -163,13 +163,13 @@ Section -CreateShortcuts
   WriteIniStr "$INSTDIR\UserGroup.url"    "InternetShortcut" "URL" "${HELP_WEB_SITE}"
   WriteIniStr "$INSTDIR\DevelGroup.url"   "InternetShortcut" "URL" "${DEVEL_WEB_SITE}"
   WriteIniStr "$INSTDIR\LibrariesGroup.url" "InternetShortcut" "URL" "${LIBRARIES_WEB_SITE}"
-  WriteIniStr "$INSTDIR\Wings3D.url"      "InternetShortcut" "URL" "${WINGS3D_WEB_SITE}"
+  ;WriteIniStr "$INSTDIR\Wings3D.url"      "InternetShortcut" "URL" "${WINGS3D_WEB_SITE}"
   SetShellVarContext all
   CreateDirectory "$SMPROGRAMS\KiCad"
   CreateShortCut "$SMPROGRAMS\KiCad\Home Page.lnk" "$INSTDIR\HomePage.url"
   CreateShortCut "$SMPROGRAMS\KiCad\Kicad Alternate Download.lnk" "$INSTDIR\AltDownloadSite.url"
   CreateShortCut "$SMPROGRAMS\KiCad\Kicad Libraries.lnk" "$INSTDIR\LibrariesGroup.url"
-  CreateShortCut "$SMPROGRAMS\KiCad\Wings3D.lnk" "$INSTDIR\Wings3D.url"
+  ;CreateShortCut "$SMPROGRAMS\KiCad\Wings3D.lnk" "$INSTDIR\Wings3D.url"
   CreateShortCut "$SMPROGRAMS\KiCad\User Group.lnk" "$INSTDIR\UserGroup.url"
   CreateShortCut "$SMPROGRAMS\KiCad\Devel Group.lnk" "$INSTDIR\DevelGroup.url"
   CreateShortCut "$SMPROGRAMS\KiCad\Uninstall.lnk" "$INSTDIR\uninstaller.exe"
@@ -231,7 +231,7 @@ Section Uninstall
   Delete "$SMPROGRAMS\KiCad\KiCad.lnk"
   Delete "$SMPROGRAMS\KiCad\Wings3D.lnk"
   Delete "$DESKTOP\KiCad.lnk"
-  Delete "$INSTDIR\Wings3D.url"
+  ;Delete "$INSTDIR\Wings3D.url"
   Delete "$INSTDIR\HomePage.url"
   Delete "$INSTDIR\UserGroup.url"
   Delete "$INSTDIR\AltDownloadSite.url"
